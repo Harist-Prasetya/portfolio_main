@@ -1,0 +1,238 @@
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  box-sizing: border-box;
+}
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+.works-page {
+  min-height: 100vh;
+  padding: 120px 60px;
+}
+
+.works-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.works-header {
+  margin-bottom: 60px;
+  border-left: 2px solid var(--green);
+  padding-left: 25px;
+}
+
+.linkedin-link-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 32px;    
+  color: var(--green) !important;
+  text-decoration: none;
+  border: 1px solid var(--green);
+  background: rgba(0, 255, 156, 0.05);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.linkedin-link-btn:hover {
+  background: var(--green);
+  color: #000 !important;
+  box-shadow: 0 0 25px rgba(0, 255, 156, 0.4);
+}
+
+/* --- BENTO GRID LAYOUT --- */
+.works-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: 20px;
+}
+
+.works-card {
+  background: rgba(11, 15, 12, 0.4);
+  border: 1px solid rgba(0, 255, 156, 0.1);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.works-card:hover {
+  border-color: var(--green);
+  box-shadow: 0 0 30px rgba(0, 255, 156, 0.05);
+}
+
+.large { grid-column: span 2; grid-row: span 1; }
+.wide { grid-column: span 2; }
+.extra-wide { grid-column: span 2; }
+.featured { grid-column: span 2; grid-row: span 1; }
+.log_01 { grid-row: span 2; } 
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+}
+
+.log-id { color: var(--green); }
+.log-cat { opacity: 0.4; letter-spacing: 1px; }
+
+.card-text h2 {
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.card-text p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.card-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.card-tags span {
+  font-family: monospace;
+  font-size: 9px;
+  color: var(--green);
+  border: 1px solid rgba(0, 255, 156, 0.2);
+  padding: 4px 8px;
+}
+
+.org-label {
+  color: var(--green);
+  font-size: 12px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.card-visual-multi {
+  width: 100%;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden; 
+  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.multi-image-container {
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: nowrap;
+  gap: 15px;
+  padding: 15px;
+  height: 220px;       
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  cursor: grab;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE */
+}
+.multi-image-container::-webkit-scrollbar { display: none; }
+
+.multi-img {
+  height: 100%;
+  width: auto;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 156, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.hover-light-scan {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 156, 0.08), transparent);
+  pointer-events: none;
+  transition: 0.6s ease;
+}
+
+.works-card:hover .hover-light-scan { left: 100%; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .works-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .works-page {
+    padding: 100px 24px;
+  }
+
+  .works-bento-grid {
+    grid-template-columns: 1fr; /* Stack vertically */
+  }
+
+  /* Reset all special spans for mobile */
+  .large, .wide, .extra-wide, .featured, .log_01 {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+
+  .multi-image-container {
+    height: 180px; /* Smaller images on mobile */
+  }
+  
+  .nav-btn-scroll {
+    display: none; /* Hide scroll buttons on mobile, user can swipe */
+  }
+}
+
+
+
+
+
+.works-card {
+  max-height: clamp(420px, 75vh, 560px);
+  overflow: hidden;
+}
+
+.card-visual-multi {
+  flex-grow: 1;
+}
+
+.card-visual-multi {
+  flex-grow: 0;
+}
+
+.multi-image-container {
+  height: clamp(140px, 22vw, 220px);
+}
+
+@media (max-height: 800px) {
+  .card-text p {
+    margin-bottom: 12px;
+    line-height: 1.45;
+  }
+
+  .card-tags {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .works-card {
+    max-height: none;
+  }
+}

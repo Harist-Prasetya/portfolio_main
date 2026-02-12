@@ -1,0 +1,29 @@
+/* src/index.css */
+
+/* 1. ATOMIC SCROLLBAR KILLER */
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  box-sizing: border-box;
+}
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+/* 2. ROOT RESET */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #050505;
+  color: #fff;
+  overflow-x: hidden;
+  display: block !important; /* Forces vertical flow */
+}
+
+#root {
+  width: 100%;
+}
+

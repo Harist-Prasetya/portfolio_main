@@ -1,0 +1,65 @@
+.social-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 32px;
+}
+
+.social-node {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--green-soft);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--green);
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.social-node:hover {
+  border-color: var(--green);
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px var(--green-soft);
+}
+
+.node-glow {
+  position: absolute;
+  inset: 0;
+  background: var(--green);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.social-node:hover .node-glow {
+  opacity: 0.2;
+}
+
+/* Add this to socialLinks.css */
+.node-icon-img {
+  width: 20px;       /* Adjust this based on how big you want the icon */
+  height: 20px;
+  object-fit: contain;
+  z-index: 2;
+  
+  /* This filter adds a subtle glow to the icon itself to match your theme */
+  filter: drop-shadow(0 0 5px var(--green));
+  transition: transform 0.3s ease;
+}
+
+.social-node:hover .node-icon-img {
+  transform: scale(1.2); /* Makes the icon pop a bit on hover */
+}
+
+@media screen and (max-width: 768px) {
+  .social-container {
+    justify-content: center;
+  }
+}

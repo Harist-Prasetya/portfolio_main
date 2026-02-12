@@ -1,0 +1,315 @@
+.vfx-viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 2000px;
+  overflow: hidden !important; 
+}
+
+.carousel-container {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 900px; 
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d;
+
+  margin-bottom: -10px;
+}
+
+.carousel-card {
+  grid-area: 1 / 1;
+  width: 650px;
+  height: 380px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 255, 156, 0.3);
+  background: #000;
+  box-shadow: 0 0 50px rgba(0, 255, 156, 0.2);
+  transform-style: preserve-3d;
+}
+
+/* ... (Kode yang tidak berubah tetap sama) ... */
+
+.vfx-main-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.5s ease;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1
+}
+
+.carousel-nav {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px; 
+  pointer-events: none;
+  z-index: 100;
+}
+
+.nav-circ {
+  pointer-events: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid var(--green);
+  background: rgba(5, 5, 5, 0.9);
+  color: var(--green);
+  cursor: pointer;
+  transform: translateZ(100px); 
+  transition: all 0.3s;
+}
+
+.nav-circ {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* ===== DESKTOP HOVER (GREEN) ===== */
+@media (hover: hover) {
+  .nav-circ:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 255, 140, 0.12);
+    border-color: rgba(0, 255, 140, 0.6);
+    box-shadow: 0 0 14px rgba(0, 255, 140, 0.35);
+  }
+}
+
+/* ===== ACTIVE / TAP (DEEPER GREEN) ===== */
+.nav-circ:active {
+  transform: scale(0.95);
+  background-color: rgba(0, 255, 140, 0.35);
+  border-color: #00ff8c;
+  box-shadow:
+    0 0 8px rgba(0, 255, 140, 0.8),
+    0 0 18px rgba(0, 255, 140, 0.6),
+    0 0 32px rgba(0, 255, 140, 0.4);
+  opacity: 1;
+}
+
+.nav-indicators {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(0, 255, 156, 0.2);
+}
+
+.dot.active {
+  background: var(--green);
+  transform: scale(1.5);
+}
+
+.vfx-card-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 30px;
+  z-index: 30;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+
+.vfx-info-title {
+  font-size: 1.6rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: 4px 0 0 0;
+  max-width: 80%;
+  line-height: 1.1;
+}
+
+.vfx-tag-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--green);
+}
+
+.status-node {
+  width: 6px;
+  height: 6px;
+  background: #333;
+  border-radius: 50%;
+}
+
+.status-node.online {
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green);
+  animation: pulse 1.5s infinite;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .carousel-card {
+    width: 90vw; /* Fit screen width */
+    height: 50vw; /* Maintain aspect ratio roughly */
+    max-height: 300px;
+  }
+  
+  .vfx-info-title {
+    font-size: 1.2rem;
+  }
+  
+  .carousel-nav {
+    width: 110%; /* Push buttons slightly outside or to edge */
+    left: -5%;
+  }
+
+  .nav-circ {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ---------- MOBILE: MOVE NAV BUTTONS BELOW CAROUSEL ---------- */
+@media (max-width: 600px) {
+
+  .carousel-nav {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    margin-top: 20px;
+
+    pointer-events: auto;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .nav-indicators {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: 16px;
+  }
+
+}
+
+/* ---------- STRUCTURAL FIX ---------- */
+
+.vfx-stage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  perspective: 2000px;
+}
+
+.vfx-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+}
+
+/* Desktop: cinematic overlay */
+@media (min-width: 769px) {
+  .vfx-controls {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 10px;
+    pointer-events: none;
+  }
+
+  .nav-circ {
+    pointer-events: auto;
+  }
+
+  .nav-indicators {
+    position: absolute;
+    bottom: -60px;
+  }
+}
+
+/* Mobile: natural flow BELOW carousel */
+@media (max-width: 768px) {
+
+  .carousel-nav {
+    position: relative;
+    transform: none;
+    justify-content: center;
+    gap: 32px;
+    width: 100%;
+  }
+
+  .nav-indicators {
+    position: relative;
+    bottom: auto;
+    margin-top: 16px;
+  }
+}
+
+/* ========= MOBILE HARD RESET (FIXES SIDE-STUCK NAV) ========= */
+@media (max-width: 768px) {
+
+  .vfx-viewport {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .vfx-stage {
+    width: 100%;
+    perspective: none;
+  }
+
+  .carousel-nav {
+    position: static !important;
+    transform: none !important;
+    width: 100%;
+    margin-top: 0px;
+
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+
+    pointer-events: auto;
+  }
+
+  .nav-indicators {
+    position: static !important;
+    transform: none !important;
+    margin-top: 10px;
+  }
+
+  .nav-circ {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,254 @@
+.hero-dashboard {
+  min-height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1.8fr 1.2fr; 
+  padding: 110px 50px 40px 50px; 
+  gap: 40px; 
+  align-items: center; /* Changed from stretch to center vertically */
+  overflow: hidden;
+}
+
+.sector {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  justify-content: center;
+}
+
+/* --- TEXT & IDENTITY --- */
+.system-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: var(--green);
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+.greeting {
+  font-family: 'Courier New', monospace;
+  color: var(--green);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.glitch-text {
+  font-size: 2.7rem;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  margin: 10px 0;
+  line-height: 1.1;
+}
+
+.role-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  height: 1.5rem; 
+  margin-bottom: 20px;
+}
+
+.typewriter-text {
+  color: var(--green);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+}
+
+/* --- AVATAR & EYE --- */
+.avatar-wrap {
+  position: relative;
+  width: 280px;
+  height: 380px;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  margin: 0 auto;
+}
+
+.eye-border {
+  width: 300px;
+  height: 300px;
+  border-radius: 80% 0;
+  border: 2px solid rgba(0, 255, 156, 0.8);
+  box-shadow: 0 0 20px rgba(0, 255, 156, 0.5);
+  position: absolute;
+  pointer-events: none;
+  animation: globalEyeBlink 5s ease-in-out infinite;
+}
+
+.eye-iris {
+  width: 160px;
+  height: 160px;
+  border-radius: 80% 0;
+  border: 1px dashed rgba(0, 255, 156, 0.4);
+  position: absolute;
+  pointer-events: none;
+  animation: globalEyeBlink 5s ease-in-out infinite;
+}
+
+.eye-pupil-container {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  pointer-events: none;
+  animation: globalEyeBlink 5s ease-in-out infinite;
+}
+
+.eye-pupil-inner {
+  width: 40px;
+  height: 40px;
+  background: var(--green);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 15px var(--green));
+  transition: transform 0.1s ease-out; /* Faster for mobile */
+}
+
+@keyframes globalEyeBlink {
+  0%, 45%, 55%, 100% {
+    transform: rotate(45deg) scaleY(1);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(45deg) scaleY(0);
+    opacity: 0;
+  }
+}
+
+/* --- RIGHT PANEL / SERVICES --- */
+.module-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.marine-data-feed {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feed-item label {
+  font-size: 10px;
+  color: var(--green);
+  opacity: 0.5;
+  display: block;
+}
+
+.feed-item span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: white;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .hero-dashboard {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding-top: 100px;
+    gap: 60px;
+  }
+
+  .sector.left-panel {
+    align-items: center;
+    text-align: center;
+    order: 1; /* Text First */
+  }
+
+  .sector.center-focus {
+    order: 2; /* Avatar Second */
+    height: 400px; /* Give space for the eye */
+  }
+
+  .sector.right-panel {
+    order: 3; /* Modules Last */
+    padding-bottom: 50px;
+  }
+  
+  .module-stack {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 cols for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-dashboard {
+    padding: 100px 24px 40px 24px;
+    gap: 40px;
+  }
+
+  .glitch-text {
+    font-size: 2rem;
+  }
+
+  .avatar-wrap {
+    transform: scale(0.85); /* Shrink eye slightly */
+  }
+
+  .module-stack {
+    display: flex; /* Back to stack on phone */
+    grid-template-columns: 1fr;
+  }
+  
+  .role-container {
+    justify-content: center;
+  }
+  
+  .marine-data-feed {
+    align-items: center;
+  }
+}
+
+/* ... Kode lainnya tetap sama ... */
+
+.system-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: var(--green); /* SEBELUMNYA #00ff88 */
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+.greeting {
+  font-family: 'Courier New', monospace;
+  color: var(--green); /* SEBELUMNYA #00ff88 */
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* ... */
+
+.eye-border {
+  width: 300px;
+  height: 300px;
+  border-radius: 80% 0;
+  /* GUNAKAN VARIABLE RGB BARU UNTUK TRANSPARANSI */
+  border: 2px solid rgba(var(--green-rgb), 0.8); 
+  box-shadow: 0 0 20px rgba(var(--green-rgb), 0.5);
+  position: absolute;
+  pointer-events: none;
+  animation: globalEyeBlink 5s ease-in-out infinite;
+  z-index: 1;
+}
+
+.eye-iris {
+  width: 160px;
+  height: 160px;
+  border-radius: 80% 0;
+  /* GUNAKAN VARIABLE RGB BARU */
+  border: 1px dashed rgba(var(--green-rgb), 0.4);
+  position: absolute;
+  pointer-events: none;
+  animation: globalEyeBlink 5s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* ... Sisanya biarkan ... */

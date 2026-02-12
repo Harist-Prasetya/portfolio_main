@@ -1,0 +1,127 @@
+.service-card {
+  background: rgba(11, 15, 12, 0.5); /* Slightly darker for better contrast */
+  backdrop-filter: blur(12px);
+  
+  /* Your glowing border - preserved and enhanced */
+  border: 1px solid rgba(0, 255, 156, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 156, 0.05);
+  
+  padding: 22px;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.service-card h3 {
+  font-size: 14px; /* Smaller heading for proportionality */
+  margin-bottom: 4px;
+}
+
+/* hover glow still handled by JS scale */
+.service-card:hover {
+  border-color: var(--green);
+  box-shadow: 0 0 30px rgba(0, 255, 156, 0.25);
+  background: rgba(0, 255, 156, 0.08);
+}
+
+.service-card:hover h3 {
+  color: var(--green);
+  text-shadow: 0 0 10px rgba(0, 255, 156, 0.5);
+}
+
+.service-card-tilt {
+  width: 100%;
+  display: block;
+}
+
+.services-page {
+  padding: 120px 64px;
+}
+
+.service-section {
+  min-height: 100vh;
+  padding: 120px 0;
+  border-bottom: 1px solid rgba(0,255,156,0.08);
+}
+
+.service-section h1 {
+  color: var(--green);
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: var(--green);
+  opacity: 0.6;
+  letter-spacing: 1px;
+}
+
+.card-status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--green);
+  animation: pulse-green 2s infinite;
+}
+
+.card-desc {
+  font-size: 11px; /* Tighter description */
+  line-height: 1.3;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+
+.card-footer {
+  font-size: 8px; /* Micro-text for that HUD feel */
+  padding-top: 8px;
+}
+
+.footer-label {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  letter-spacing: 1px;
+  font-weight: bold;
+  /* Adds a slight glow to the module number */
+  text-shadow: 0 0 5px rgba(0, 255, 156, 0.3);
+}
+
+.service-card:hover .footer-label {
+  color: #fff;
+  opacity: 1;
+}
+
+.footer-arrow {
+  font-size: 10px;
+}
+
+.service-card {
+  background: rgba(11, 15, 12, 0.5);
+  backdrop-filter: blur(12px);
+  
+  /* Ganti border manual dengan variable */
+  border: 1px solid rgba(var(--green-rgb), 0.2);
+  box-shadow: 0 0 20px rgba(var(--green-rgb), 0.05);
+  
+  padding: 22px;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ... */
+
+.service-card:hover {
+  border-color: var(--green);
+  box-shadow: 0 0 30px rgba(var(--green-rgb), 0.25);
+  background: rgba(var(--green-rgb), 0.08);
+}
